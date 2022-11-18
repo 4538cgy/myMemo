@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_all"
+    tools:context=".Activity.DrawingActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/back_ConLayout"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        tools:ignore="MissingConstraints"
+        android:layout_marginTop="12dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginLeft="16dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        >
+        <ImageView
+            android:id="@+id/back_Btn"
+            android:layout_width="20dp"
+            android:layout_height="0dp"
+            android:src="@drawable/arrow"
+            android:layout_marginLeft="12dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="그림판"
+            android:textSize="16dp"
+            android:textStyle="bold"
+            android:layout_marginLeft="5dp"
+            app:layout_constraintLeft_toRightOf="@+id/back_Btn"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/drawing_Con"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        tools:ignore="MissingConstraints"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:background="@drawable/background_drawing"
+        app:layout_constraintTop_toBottomOf="@+id/back_ConLayout"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/drawing_Menu_Con">
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/drawing_Menu_Con"
+        android:layout_width="0dp"
+        android:layout_height="49dp"
+        android:background="@drawable/background_drawing_menu"
+        tools:ignore="MissingConstraints"
+        android:layout_marginBottom="15dp"
+        app:layout_constraintLeft_toLeftOf="@+id/drawing_Con"
+        app:layout_constraintRight_toRightOf="@+id/drawing_Con"
+        app:layout_constraintTop_toBottomOf="@+id/drawing_Con"
+        app:layout_constraintBottom_toTopOf="@+id/drawing_Submit"
+        >
+
+        <ImageView
+            android:id="@+id/drawing_pen"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@drawable/drawing_pen"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginLeft="13dp"
+            ></ImageView>
+
+        <ImageView
+            android:id="@+id/drawing_eraser"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@drawable/drawing_eraser"
+            app:layout_constraintLeft_toRightOf="@+id/drawing_pen"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginLeft="13dp"
+            ></ImageView>
+
+        <TextView
+            android:id="@+id/TEXT_1"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:background="@drawable/drawing_thickness"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/drawing_eraser"
+            android:layout_marginLeft="13dp"
+            >
+        </TextView>
+
+        <TextView
+            android:id="@+id/TEXT_2"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:background="@drawable/drawing_thickness"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/TEXT_1"
+            android:layout_marginLeft="13dp">
+        </TextView>
+
+        <TextView
+            android:id="@+id/TEXT_3"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:background="@drawable/drawing_thickness"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/TEXT_2"
+            android:layout_marginLeft="13dp">
+        </TextView>
+
+
+        <ImageView
+            android:id="@+id/color_Black"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:background="@drawable/drawing_black"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/TEXT_3"
+            app:layout_constraintRight_toLeftOf="@+id/color_White"
+            android:layout_marginLeft="13dp"
+            ></ImageView>
+
+        <ImageView
+            android:id="@+id/color_White"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:background="@drawable/drawing_white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/color_Black"
+            app:layout_constraintRight_toLeftOf="@+id/color_Red"
+            ></ImageView>
+
+        <ImageView
+            android:id="@+id/color_Red"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:background="@drawable/drawing_red"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/color_White"
+            app:layout_constraintRight_toLeftOf="@+id/color_Green"
+            ></ImageView>
+
+        <ImageView
+            android:id="@+id/color_Green"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:background="@drawable/drawing_green"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/color_Red"
+            app:layout_constraintRight_toLeftOf="@+id/color_Blue"
+            ></ImageView>
+
+        <ImageView
+            android:id="@+id/color_Blue"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:background="@drawable/drawing_blue"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/color_Green"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginRight="10dp"
+            ></ImageView>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/drawing_Submit"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:text="그림 적용하기"
+        android:textColor="@color/white"
+        android:textSize="18dp"
+        android:background="@drawable/background_save_btn"
+        android:gravity="center"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="@+id/drawing_Con"
+        app:layout_constraintRight_toRightOf="@+id/drawing_Con"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
