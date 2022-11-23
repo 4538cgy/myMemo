@@ -32,6 +32,9 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class WriteActivity extends AppCompatActivity implements MiniListDeleteCallback {
+    
+    //1. 변수 네이밍은 카멜케이스로 적어주세요. 
+    
     ImageView back_Btn;
     EditText write_Title;
     EditText write_Context;
@@ -45,6 +48,7 @@ public class WriteActivity extends AppCompatActivity implements MiniListDeleteCa
     WriteModel data;
     WriteDataBase dataBase;
 
+    //2. 이런 띄워쓰기는 항상 리포맷코드를 돌려서 없애주시는게 좋습니다.
     Toast toast ;
 
     MiniListAdapter miniAdapter;
@@ -59,6 +63,8 @@ public class WriteActivity extends AppCompatActivity implements MiniListDeleteCa
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_write);
+        
+        //3. 데이터 바인딩이나 뷰바인딩을 활용해서 매번 반복되는 findViewById 를 없앨 수 있습니다.
         back_Btn = findViewById(R.id.back_Btn);
         write_Title = findViewById(R.id.write_Title);
         write_Context = findViewById(R.id.write_Context);
@@ -79,7 +85,8 @@ public class WriteActivity extends AppCompatActivity implements MiniListDeleteCa
         miniAdapter = new MiniListAdapter( WriteActivity.this , uriList);
         gallert_image.setAdapter(miniAdapter);
         miniAdapter.setMiniListDeleteCallback(WriteActivity.this);
-
+        
+        //4. 레이아웃 매니저는 xml 리사이클러뷰에 속성으로 설정해주세요. orientation 도 마찬가지 그러면 코드량을 더욱 줄일 수 있습니다.
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(WriteActivity.this);
         linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
         gallert_image.setLayoutManager(linearLayoutManager);
@@ -88,6 +95,7 @@ public class WriteActivity extends AppCompatActivity implements MiniListDeleteCa
             back_Btn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    //5. sysout 사용보단 팀버 라이브러리나 Debug 용 Logger 를 사용해주세요. sysout 남겨두시면 나중에 앱 릴리즈해도 사용자한테 로그가 보입니다.
                     System.out.println("@@@@@@@@@ 뒤로가기 @@@@@@@@@@@@@");
                 }
             });
@@ -122,16 +130,19 @@ public class WriteActivity extends AppCompatActivity implements MiniListDeleteCa
 
                     Intent i = new Intent();
                     
+                    //6. 키는 로우 스트링보단 전역적으로 선언하시고 key_feature와 같은 네이밍 룰을 가지고 계시면 편합니다.
                     i.putExtra("title", title);
                     i.putExtra("context", context);
 
                     setResult(WriteActivity.RESULT_OK, i);
 
+                    //8. 자바에도 isNotEmpty 함수가 있지않던가요?
                     if (!title.equals("")) {
                         if (!context.equals("")) {
 
                                 if(uriList != null){
                                     if(!uriList.isEmpty()){
+                                        //7. uriList에 0을 고정적으로 접근하시면 앱이 터질 가능성이 있습니다.
                                         String imgThum = String.valueOf(uriList.get(0));
                                         data.setUriList(uriList);
                                         data.setImgThum(imgThum);
@@ -156,6 +167,7 @@ public class WriteActivity extends AppCompatActivity implements MiniListDeleteCa
                                 finish();
 
                         } else {
+                            //로우 스트링은 사용을 최대한 자제해주시고 strings.xml 에서 관리해주세요.
                             toast.makeText(WriteActivity.this, "내용 입력해주세요.", Toast.LENGTH_SHORT).show();
                         }
                     } else {
@@ -250,4 +262,6 @@ public class WriteActivity extends AppCompatActivity implements MiniListDeleteCa
         }
         miniAdapter.notifyDataSetChanged();
     }
+    
+    //notifyDataSetChanged 를 사용하시기보단 range와 같은 바뀐부분만 변경되게하여 리소스 사용을 줄여주세요. ListAdapter와 diffUtil 의 조합을 사용하셔도 좋아요.
 }
